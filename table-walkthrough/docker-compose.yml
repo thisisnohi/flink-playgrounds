@@ -18,7 +18,7 @@
 
 services:
   jobmanager:
-    image: apache/flink-table-walkthrough:1-FLINK-1.16-scala_2.12
+    image: apache/flink-table-walkthrough:1-FLINK-2.0-scala_2.12
     build: .
     hostname: "jobmanager"
     expose:
@@ -32,7 +32,7 @@ services:
       - kafka
       - mysql
   taskmanager:
-    image: apache/flink-table-walkthrough:1-FLINK-1.16-scala_2.12
+    image: apache/flink-table-walkthrough:1-FLINK-2.0-scala_2.12
     build: .
     expose:
       - "6121"

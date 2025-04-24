@@ -20,6 +20,12 @@ FROM maven:3.8-eclipse-temurin-17 AS builder
 
 COPY ./pom.xml /opt/pom.xml
 COPY ./src /opt/src
+COPY ./settings.xml /usr/share/maven/conf
+
+#RUN echo "正在安装依赖包..." && \
+#    mvn -version  && \
+#    sleep 10
+
 RUN cd /opt; mvn clean verify -Dmaven.test.skip
 
 FROM apache/flink:1.16.0-scala_2.12-java11
