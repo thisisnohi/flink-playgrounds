@@ -25,6 +25,7 @@ FROM maven:3.8-eclipse-temurin-17 AS builder
 # Get Click Count job and compile it
 COPY ./java/flink-playground-clickcountjob /opt/flink-playground-clickcountjob
 WORKDIR /opt/flink-playground-clickcountjob
+COPY ../../settings.xml /usr/share/maven/conf
 RUN mvn clean verify
 
 
@@ -32,7 +33,7 @@ RUN mvn clean verify
 # Build Operations Playground Image
 ###############################################################################
 
-FROM apache/flink:1.16.0-scala_2.12-java11
+FROM apache/flink:2.0.0-scala_2.12-java11
 
 WORKDIR /opt/flink/bin
 
