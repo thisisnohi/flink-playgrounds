@@ -65,4 +65,10 @@ services:
       - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka:9093
       - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
 volumes:
+#  flink_data:
   flink_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /tmp/  # 指定主机路径
