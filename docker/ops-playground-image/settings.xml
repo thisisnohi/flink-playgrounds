@@ -286,7 +286,7 @@ under the License.
         </repository>
         <repository>
           <id>aliyun-snapshots</id>
-          <url>https://maven.aliyun.com/repository/snapshots/</url>
+          <url>https://maven.aliyun.com/repository/apache-snapshots/</url>
           <releases>
             <enabled>false</enabled>
           </releases>
