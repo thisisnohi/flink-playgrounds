@@ -177,7 +177,7 @@ under the License.
 
     <mirror>
       <id>aliyun-snapshots</id>
-      <mirrorOf>apache-snapshots</mirrorOf>  <!-- 仅代理 Snapshot 仓库 -->
+      <mirrorOf>apache.snapshots</mirrorOf>  <!-- 仅代理 Snapshot 仓库 -->
       <name>Aliyun Snapshot Repository</name>
       <url>https://maven.aliyun.com/repository/apache-snapshots</url>
     </mirror>
