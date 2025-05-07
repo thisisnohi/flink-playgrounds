@@ -273,36 +273,9 @@ under the License.
     <profile>
       <id>aliyun</id>
       <repositories>
-        <!-- 如果不想用 mirrorOf，可以直接指定阿里云仓库 -->
         <repository>
-          <id>aliyun-public</id>
-          <url>https://maven.aliyun.com/repository/public/</url>
-          <releases>
-            <enabled>true</enabled>
-          </releases>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-        </repository>
-        <repository>
-          <id>aliyun-snapshots</id>
-          <url>https://maven.aliyun.com/repository/apache-snapshots/</url>
-          <releases>
-            <enabled>false</enabled>
-          </releases>
-          <snapshots>
-            <enabled>true</enabled>
-          </snapshots>
-        </repository>
-      </repositories>
-    </profile>
-
-    <profile>
-      <id>maven-central</id>
-      <repositories>
-        <repository>
-          <id>maven-central</id>
-          <url>https://repo1.maven.org/maven2/</url>
+          <id>aliyun</id>
+          <url>https://maven.aliyun.com/repository/public</url>
           <releases>
             <enabled>true</enabled>
           </releases>
@@ -312,6 +285,76 @@ under the License.
           </snapshots>
         </repository>
       </repositories>
+    </profile>
+    <profile>
+      <id>scfsoft</id>
+      <repositories>
+        <repository>
+          <id>scfsoft</id>
+          <url>http://192.168.1.191:30085/nexus/repository/scf-public/</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+          </snapshots>
+        </repository>
+      </repositories>
+    </profile>
+    <profile>
+      <id>ebstudio</id>
+      <repositories>
+        <repository>
+          <id>ebstudio-public</id>
+          <url>https://i.enbrau.com:91/nexus/repository/ebstudio-public/</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+          </snapshots>
+        </repository>
+      </repositories>
+    </profile>
+    <profile>
+      <id>maven-central</id>
+      <repositories>
+        <repository>
+          <id>maven-central</id>
+          <url>https://repo.maven.apache.org/maven2/</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+          </snapshots>
+        </repository>
+      </repositories>
+    </profile>
+    <profile>
+      <id>apache</id>
+      <repositories>
+        <repository>
+          <id>apache-snapshots</id>
+          <url>https://repository.apache.org/content/repositories/snapshots/</url>
+        </repository>
+      </repositories>
+    </profile>
+
+    <profile>
+      <id>jdk-1.8</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+        <jdk>1.8</jdk>
+      </activation>
+      <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+      </properties>
     </profile>
   </profiles>
 
@@ -325,5 +368,6 @@ under the License.
   -->
   <activeProfiles>
     <activeProfile>aliyun</activeProfile>
+    <activeProfile>apache</activeProfile>
   </activeProfiles>
 </settings>
