@@ -295,23 +295,6 @@ under the License.
         </repository>
       </repositories>
     </profile>
-    <profile>
-      <id>maven-central</id>
-      <repositories>
-        <repository>
-          <id>maven-central</id>
-          <url>http://central.maven.org/maven2/</url>
-          <releases>
-            <enabled>true</enabled>
-          </releases>
-          <snapshots>
-            <enabled>true</enabled>
-            <updatePolicy>always</updatePolicy>
-          </snapshots>
-        </repository>
-      </repositories>
-    </profile>
-
   </profiles>
 
   <!-- activeProfiles
@@ -324,6 +307,5 @@ under the License.
   -->
   <activeProfiles>
     <activeProfile>aliyun</activeProfile>
-    <activeProfile>maven-central</activeProfile>
   </activeProfiles>
 </settings>
