@@ -168,21 +168,26 @@ under the License.
      -->
 
 
-
-
     <mirror>
-      <id>alimaven</id>
-      <mirrorOf>central</mirrorOf>
-      <name>阿里云公共仓库</name>
+      <id>aliyun-public</id>
+      <mirrorOf>central,jcenter</mirrorOf>
+      <name>阿里云公共库，聚合了central和jcenter，包括release和snapshot</name>
       <url>https://maven.aliyun.com/repository/public</url>
     </mirror>
 
-      <mirror>
-        <id>repo1</id>
-        <mirrorOf>central</mirrorOf>
-        <name>Human Readable Name for this Mirror.</name>
-        <url>https://repo.maven.apache.org/maven2/</url>
-     </mirror>
+    <mirror>
+      <id>aliyun-snapshots</id>
+      <name>Aliyun Snapshot Repository</name>
+      <url>https://maven.aliyun.com/repository/snapshots/</url>
+      <mirrorOf>snapshots</mirrorOf>  <!-- 仅代理 Snapshot 仓库 -->
+    </mirror>
+
+    <mirror>
+      <id>repo1</id>
+      <mirrorOf>central</mirrorOf>
+      <name>Human Readable Name for this Mirror.</name>
+      <url>https://repo.maven.apache.org/maven2/</url>
+    </mirror>
 
   </mirrors>
 
@@ -272,21 +277,39 @@ under the License.
       </properties>
     </profile>
     -->
-     <profile>
-        <id>aliyun</id>
-        <repositories>
-            <repository>
-                <id>aliyun</id>
-                <url>https://maven.aliyun.com/repository/public</url>
-                <releases>
-                    <enabled>true</enabled>
-                </releases>
-                <snapshots>
-                    <enabled>true</enabled>
-                    <updatePolicy>always</updatePolicy>
-                </snapshots>
-            </repository>
-        </repositories>
+    <profile>
+      <id>aliyun</id>
+      <repositories>
+        <!-- 如果不想用 mirrorOf，可以直接指定阿里云仓库 -->
+        <repository>
+          <id>aliyun-public</id>
+          <url>https://maven.aliyun.com/repository/public/</url>
+          <releases><enabled>true</enabled></releases>
+          <snapshots><enabled>false</enabled></snapshots>
+        </repository>
+        <repository>
+          <id>aliyun-snapshots</id>
+          <url>https://maven.aliyun.com/repository/snapshots/</url>
+          <releases><enabled>false</enabled></releases>
+          <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+      </repositories>
+    </profile>
+    <profile>
+      <id>maven-central</id>
+      <repositories>
+        <repository>
+          <id>maven-central</id>
+          <url>http://central.maven.org/maven2/</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+          </snapshots>
+        </repository>
+      </repositories>
     </profile>
 
   </profiles>
@@ -301,6 +324,6 @@ under the License.
   -->
   <activeProfiles>
     <activeProfile>aliyun</activeProfile>
-    <activeProfile>apache</activeProfile>
+    <activeProfile>maven-central</activeProfile>
   </activeProfiles>
 </settings>
