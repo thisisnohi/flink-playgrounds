@@ -170,23 +170,16 @@ under the License.
 
     <mirror>
       <id>aliyun-public</id>
-      <mirrorOf>central,jcenter</mirrorOf>
+      <mirrorOf>central</mirrorOf>
       <name>阿里云公共库，聚合了central和jcenter，包括release和snapshot</name>
       <url>https://maven.aliyun.com/repository/public</url>
     </mirror>
 
     <mirror>
       <id>aliyun-snapshots</id>
-      <name>Aliyun Snapshot Repository</name>
-      <url>https://maven.aliyun.com/repository/snapshots/</url>
       <mirrorOf>snapshots</mirrorOf>  <!-- 仅代理 Snapshot 仓库 -->
-    </mirror>
-
-    <mirror>
-      <id>repo1</id>
-      <mirrorOf>central</mirrorOf>
-      <name>Human Readable Name for this Mirror.</name>
-      <url>https://repo.maven.apache.org/maven2/</url>
+      <name>Aliyun Snapshot Repository</name>
+      <url>https://maven.aliyun.com/repository/snapshots</url>
     </mirror>
 
   </mirrors>
@@ -284,14 +277,39 @@ under the License.
         <repository>
           <id>aliyun-public</id>
           <url>https://maven.aliyun.com/repository/public/</url>
-          <releases><enabled>true</enabled></releases>
-          <snapshots><enabled>false</enabled></snapshots>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
         </repository>
         <repository>
           <id>aliyun-snapshots</id>
           <url>https://maven.aliyun.com/repository/snapshots/</url>
-          <releases><enabled>false</enabled></releases>
-          <snapshots><enabled>true</enabled></snapshots>
+          <releases>
+            <enabled>false</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+    </profile>
+
+    <profile>
+      <id>maven-central</id>
+      <repositories>
+        <repository>
+          <id>maven-central</id>
+          <url>https://repo1.maven.org/maven2/</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+          </snapshots>
         </repository>
       </repositories>
     </profile>
