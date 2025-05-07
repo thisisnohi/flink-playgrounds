@@ -18,10 +18,10 @@
 
 package org.apache.flink.playgrounds.ops.clickcount;
 
-import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.playgrounds.ops.clickcount.records.ClickEvent;
 import org.apache.flink.playgrounds.ops.clickcount.records.ClickEventSerializationSchema;
 
+import org.apache.flink.util.ParameterTool;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -53,7 +53,7 @@ public class ClickEventGenerator {
 
 	//this calculation is only accurate as long as pages.size() * EVENTS_PER_WINDOW divides the
 	//window size
-	public static final long DELAY = WINDOW_SIZE.toMilliseconds() / pages.size() / EVENTS_PER_WINDOW;
+	public static final long DELAY = WINDOW_SIZE.toMillis() / pages.size() / EVENTS_PER_WINDOW;
 
 	public static void main(String[] args) throws Exception {
 
@@ -70,7 +70,7 @@ public class ClickEventGenerator {
 		while (true) {
 
 			ProducerRecord<byte[], byte[]> record = new ClickEventSerializationSchema(topic).serialize(
-					clickIterator.next(),
+					clickIterator.next(), null,
 					null);
 
 			producer.send(record);
@@ -105,7 +105,7 @@ public class ClickEventGenerator {
 
 		private Date nextTimestamp(String page) {
 			long nextTimestamp = nextTimestampPerKey.getOrDefault(page, 0L);
-			nextTimestampPerKey.put(page, nextTimestamp + WINDOW_SIZE.toMilliseconds() / EVENTS_PER_WINDOW);
+			nextTimestampPerKey.put(page, nextTimestamp + WINDOW_SIZE.toMillis() / EVENTS_PER_WINDOW);
 			return new Date(nextTimestamp);
 		}
 
