@@ -25,6 +25,7 @@ taskmanager.memory.process.size: 1728Mb
 taskmanager.numberOfTaskSlots: 2
 
 state.backend: filesystem
+execution.checkpointing.storage: filesystem
 execution.checkpointing.dir: file:///tmp/flink-checkpoints-directory
 execution.checkpointing.savepoint-dir: file:///tmp/flink-checkpoints-directory
 
